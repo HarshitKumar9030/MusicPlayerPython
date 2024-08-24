@@ -111,7 +111,7 @@ If you encounter any issues, please [open an issue](https://github.com/HarshitKu
 
 - **Developer**: Harshit (leoncyriac.me)
 - **Socials**: [X (Twitter): @OhHarshit](https://twitter.com/OhHarshit) | [Instagram: @\_harshit.xd](https://instagram.com/_harshit.xd)
-- **Icons**: Icons are sourced from [Icon Provider Name].
+- **Icons**: Icons are sourced from svgrepo.
 - **Libraries Used**: PyQt5, pygame, SQLite
 
 ## License
