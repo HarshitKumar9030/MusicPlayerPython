@@ -6,31 +6,26 @@ class CreditsPage(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         
-        # Attempt to load the custom Montserrat font
         font_id = QFontDatabase.addApplicationFont("assets/fonts/Montserrat-VariableFont_wght.ttf")
         if font_id == -1:
             print("Error: Font could not be loaded. Using default font.")
-            font_family = "Arial"  # Fallback to Arial if Montserrat fails
+            font_family = "Arial" 
         else:
-            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]  # Get the font family name
+            font_family = QFontDatabase.applicationFontFamilies(font_id)[0] 
 
-        # Set the default font for the app
         self.default_font = QFont(font_family, 16)
         self.layout = QVBoxLayout()
 
-        # Page Title
         title_label = QLabel("Credits")
         title_label.setFont(QFont(font_family, 28, QFont.Bold))
         title_label.setAlignment(Qt.AlignCenter)
         title_label.setStyleSheet("color: #1DB954; padding: 20px;")
 
-        # Separator line
         separator = QFrame()
         separator.setFrameShape(QFrame.HLine)
         separator.setFrameShadow(QFrame.Sunken)
         separator.setStyleSheet("color: #1DB954; margin: 15px 0;")
 
-        # Developer Info with Icon
         dev_info_layout = QHBoxLayout()
         dev_icon = QLabel()
         dev_icon.setPixmap(QPixmap("assets/icons/author.svg").scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation))
@@ -45,7 +40,6 @@ class CreditsPage(QWidget):
         dev_info_layout.addWidget(developer_label)
         dev_info_layout.addStretch()
 
-        # Social Links
         links_layout = QVBoxLayout()
 
         website_label = QLabel('<a href="https://leoncyriac.me">Website: leoncyriac.me</a>')
@@ -73,13 +67,12 @@ class CreditsPage(QWidget):
 
 
 
-        # Libraries Used
+        
         libraries_label = QLabel("Libraries used: PyQt5, pygame, SQLite")
         libraries_label.setFont(QFont(font_family, 14))
         libraries_label.setAlignment(Qt.AlignCenter)
         libraries_label.setStyleSheet("color: #B3B3B3; margin-top: 10px;")
 
-        # Adding all widgets to the main layout
         self.layout.addWidget(title_label)
         self.layout.addWidget(separator)
         self.layout.addLayout(dev_info_layout)

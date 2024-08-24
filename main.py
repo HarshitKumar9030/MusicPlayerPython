@@ -12,7 +12,7 @@ class SpotifyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Spotify Music Player")
+        self.setWindowTitle("Music Player")
         self.setGeometry(100, 100, 360, 720)
 
         self.theme_manager = ThemeManager(QApplication.instance())
