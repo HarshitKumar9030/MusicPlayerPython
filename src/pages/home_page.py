@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QListWidget, QPushButton, QLabel
+from PyQt5.QtWidgets import QWidget, QListWidgetItem, QVBoxLayout, QListWidget, QPushButton, QLabel
 
 class HomePage(QWidget):
     def __init__(self, parent=None, player_logic=None):

@@ -12,7 +12,7 @@ class SpotifyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Music Player")
+        self.setWindowTitle("Spotify Music Player")
         self.setGeometry(100, 100, 360, 720)
 
         self.theme_manager = ThemeManager(QApplication.instance())
@@ -20,7 +20,7 @@ class SpotifyApp(QMainWindow):
         self.player_logic = PlayerLogic()
 
         main_layout = QHBoxLayout()
-        sidebar = Sidebar(self)
+        sidebar = Sidebar(self, theme_manager=self.theme_manager)
 
         self.pages = QStackedWidget()
         self.pages.addWidget(HomePage(self, self.player_logic))
@@ -51,6 +51,9 @@ class SpotifyApp(QMainWindow):
 
     def show_settings_page(self):
         print("Settings page not implemented yet!")
+
+    def add_song(self):
+        self.player_logic.add_song(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

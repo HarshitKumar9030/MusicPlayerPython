@@ -51,6 +51,8 @@ class PlayerControls(QWidget):
 
         self.setLayout(layout)
 
+        self.player_logic.set_progress_elements(self.song_progress, self.timestamp_label)
+
     def toggle_play_pause(self):
         self.is_playing = not self.is_playing
         if self.is_playing:

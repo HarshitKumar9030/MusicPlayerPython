@@ -1,14 +1,13 @@
 from PyQt5.QtCore import QFile, QTextStream
-from PyQt5.QtWidgets import QApplication
 
 class ThemeManager:
-    def __init__(self, app: QApplication):
+    def __init__(self, app):
         self.app = app
-        self.dark_mode = False
+        self.is_dark_mode = False # Dark mode isn't that good yet! 
         self.load_theme()
 
     def load_theme(self):
-        theme_file = "assets/styles/spotify.qss" if self.dark_mode else "assets/styles/spotify_light.qss"
+        theme_file = "assets/styles/spotify.qss" if self.is_dark_mode else "assets/styles/spotify_light.qss"
         file = QFile(theme_file)
         if file.exists():
             file.open(QFile.ReadOnly | QFile.Text)
@@ -18,5 +17,5 @@ class ThemeManager:
             file.close()
 
     def toggle_theme(self):
-        self.dark_mode = not self.dark_mode
+        self.is_dark_mode = not self.is_dark_mode
         self.load_theme()

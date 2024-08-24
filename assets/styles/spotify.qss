@@ -11,7 +11,7 @@ QPushButton {
     background-color: transparent;
     border: 1px solid transparent;
     padding: 10px 15px;
-    color: #B3B3B3;
+    color: #D1D1D1; /* Lightened text for better contrast */
     border-radius: 10px;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -19,8 +19,8 @@ QPushButton {
 
 QPushButton:hover {
     color: #FFFFFF;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15); /* Increased opacity for better visibility */
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 QPushButton:pressed {
@@ -41,10 +41,11 @@ QPushButton#sidebarBtn {
     padding: 10px;
     font-size: 16px;
     text-align: left;
+    color: #D1D1D1; /* Lightened text for sidebar buttons */
 }
 
 QPushButton#sidebarBtn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15); /* Increased hover visibility */
     color: #FFFFFF;
 }
 
@@ -94,6 +95,7 @@ QSlider::sub-page:horizontal {
     border-radius: 4px;
 }
 
+/* List Widget */
 QListWidget {
     background-color: #181818;
     color: #FFFFFF;
@@ -132,6 +134,7 @@ QProgressBar::chunk {
     width: 10px;
 }
 
+/* Sidebar and other animated containers */
 QWidget#animatedContainer {
     animation: slideIn 0.5s ease-out;
 }
@@ -184,4 +187,3 @@ QLineEdit {
 QLineEdit:focus {
     border-color: #1DB954;
 }
-
