@@ -1,74 +1,60 @@
 import sys
-import os
-import pygame
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QFileDialog, QListWidget, QLabel, QHBoxLayout
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QStackedWidget
+from src.components.sidebar import Sidebar
+from src.components.player_controls import PlayerControls
+from src.pages.home_page import HomePage
+from src.pages.playlist_page import PlaylistPage
+from src.pages.credits_page import CreditsPage
+from src.utils.theme_manager import ThemeManager
+from src.utils.player_logic import PlayerLogic
 
-class MusicPlayer(QWidget):
+class SpotifyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        pygame.mixer.init()
-
         self.setWindowTitle("Music Player")
-        self.setGeometry(100, 100, 400, 300)
-        
-        layout = QVBoxLayout()
+        self.setGeometry(100, 100, 360, 720)
 
-        self.playlist = QListWidget()
-        layout.addWidget(self.playlist)
+        self.theme_manager = ThemeManager(QApplication.instance())
 
-        controls_layout = QHBoxLayout()
+        self.player_logic = PlayerLogic()
 
-        self.play_button = QPushButton("Play")
-        self.play_button.clicked.connect(self.play_music)
-        controls_layout.addWidget(self.play_button)
+        main_layout = QHBoxLayout()
+        sidebar = Sidebar(self)
 
-        self.pause_button = QPushButton("Pause")
-        self.pause_button.clicked.connect(self.pause_music)
-        controls_layout.addWidget(self.pause_button)
+        self.pages = QStackedWidget()
+        self.pages.addWidget(HomePage(self, self.player_logic))
+        self.pages.addWidget(PlaylistPage(self, self.player_logic))
+        self.pages.addWidget(CreditsPage(self))
 
-        self.stop_button = QPushButton("Stop")
-        self.stop_button.clicked.connect(self.stop_music)
-        controls_layout.addWidget(self.stop_button)
+        main_content = QWidget()
+        content_layout = QVBoxLayout()
+        content_layout.addWidget(self.pages)
+        content_layout.addWidget(PlayerControls(self, self.player_logic))
+        main_content.setLayout(content_layout)
 
-        layout.addLayout(controls_layout)
+        main_layout.addWidget(sidebar)
+        main_layout.addWidget(main_content)
+        container = QWidget()
+        container.setLayout(main_layout)
 
-        # Add song button
-        self.add_song_button = QPushButton("Add Song")
-        self.add_song_button.clicked.connect(self.add_song)
-        layout.addWidget(self.add_song_button)
+        self.setCentralWidget(container)
 
-        self.setLayout(layout)
+    def show_home_page(self):
+        self.pages.setCurrentIndex(0)
 
-        self.current_song = None
+    def show_playlist_page(self):
+        self.pages.setCurrentIndex(1)
 
-    def add_song(self):
-        file_dialog = QFileDialog()
-        file_path, _ = file_dialog.getOpenFileName(self, "Select Song", "", "Audio Files (*.mp3 *.wav)")
-        if file_path:
-            self.playlist.addItem(file_path)
+    def show_credits_page(self):
+        self.pages.setCurrentIndex(2)
 
-    def play_music(self):
-        if self.playlist.count() > 0:
-            selected_song = self.playlist.currentItem()
-            if selected_song:
-                song_path = selected_song.text()
-                if self.current_song != song_path:
-                    pygame.mixer.music.load(song_path)
-                    pygame.mixer.music.play()
-                    self.current_song = song_path
-                else:
-                    pygame.mixer.music.unpause()
-
-    def pause_music(self):
-        pygame.mixer.music.pause()
-
-    def stop_music(self):
-        pygame.mixer.music.stop()
+    def show_settings_page(self):
+        print("Settings page not implemented yet!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    player = MusicPlayer()
+    app.setStyleSheet("assets/styles/spotify.qss")
+    player = SpotifyApp()
     player.show()
     sys.exit(app.exec_())

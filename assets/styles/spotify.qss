@@ -1,0 +1,187 @@
+/* Root styles */
+QWidget {
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: 'Arial';
+    border-radius: 10px;
+}
+
+/* PushButton styles */
+QPushButton {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 10px 15px;
+    color: #B3B3B3;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+QPushButton:hover {
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #1DB954;
+    color: #FFFFFF;
+}
+
+/* Label styles */
+QLabel {
+    color: #E0E0E0;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+/* Sidebar navigation buttons */
+QPushButton#sidebarBtn {
+    padding: 10px;
+    font-size: 16px;
+    text-align: left;
+}
+
+QPushButton#sidebarBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+QPushButton#sidebarBtn:checked {
+    background-color: #1DB954;
+    color: #FFFFFF;
+}
+
+/* Scrollbar customization */
+QScrollBar:vertical {
+    background-color: #181818;
+    width: 10px;
+    margin: 0px 3px 0px 3px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #1DB954;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+    border: none;
+}
+
+QSlider::groove:horizontal {
+    height: 8px;
+    background: #535353;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    width: 18px;
+    height: 18px;
+    background: #1DB954;
+    border-radius: 9px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #1ED760;
+}
+
+QSlider::sub-page:horizontal {
+    background: #1DB954;
+    border-radius: 4px;
+}
+
+QListWidget {
+    background-color: #181818;
+    color: #FFFFFF;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+QListWidget::item {
+    padding: 10px;
+    margin: 2px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+QListWidget::item:hover {
+    background-color: #282828;
+}
+
+QListWidget::item:selected {
+    background-color: #1DB954;
+    color: #FFFFFF;
+}
+
+/* Progress bar for song */
+QProgressBar {
+    background-color: #282828;
+    border-radius: 5px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+QProgressBar::chunk {
+    background-color: #1DB954;
+    width: 10px;
+}
+
+QWidget#animatedContainer {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+QToolTip {
+    background-color: #1DB954;
+    color: #FFFFFF;
+    border: 1px solid #1DB954;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+/* Progress bar animation */
+QProgressBar::chunk:disabled {
+    background-color: #535353;
+}
+
+QProgressBar::chunk:disabled:hover {
+    background-color: #434343;
+}
+
+/* Dialog styles */
+QDialog {
+    background-color: #181818;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+QLineEdit {
+    background-color: #282828;
+    border: 1px solid #3B3B3B;
+    padding: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+QLineEdit:focus {
+    border-color: #1DB954;
+}
+
