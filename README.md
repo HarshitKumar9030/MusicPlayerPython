@@ -1,5 +1,7 @@
 # Spotify-Inspired Music Player
 
+![player](https://github.com/user-attachments/assets/08f7346e-8c2d-44c3-b1e8-0780201cf4c5)
+
 A sleek, modern music player inspired by Spotify’s UI, built using Python and PyQt5. The app features playlist management, song playback controls (play, pause, shuffle, loop), a dynamic UI with theme switching, and more.
 
 ## Features
